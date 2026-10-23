@@ -18,6 +18,9 @@
 #ifndef KEXEC_ARCH_ARM64
 #define KEXEC_ARCH_ARM64	(183 << 16)
 #endif
+#ifndef KEXEC_ARCH_LOONGARCH
+#define KEXEC_ARCH_LOONGARCH	(258 << 16)
+#endif
 
 static unsigned long kexec_load_flags[] = {
 	KEXEC_ON_CRASH, KEXEC_PRESERVE_CONTEXT,
@@ -32,6 +35,10 @@ static unsigned long kexec_arches[] = {
 #elif defined(__aarch64__)
 static unsigned long kexec_arches[] = {
 	KEXEC_ARCH_DEFAULT, KEXEC_ARCH_ARM64,
+};
+#elif defined(__loongarch64)
+static unsigned long kexec_arches[] = {
+	KEXEC_ARCH_DEFAULT, KEXEC_ARCH_LOONGARCH,
 };
 #elif defined(__arm__)
 static unsigned long kexec_arches[] = {

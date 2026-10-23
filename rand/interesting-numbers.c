@@ -199,6 +199,15 @@ static unsigned long per_arch_interesting_addr(unsigned long low)
 	case 2: return KERNEL_ADDR | (low & 0x0fffff);			// kernel text
 	case 3: return 0xffffff8000000000UL | (low & 0x3fffffff);	// KASAN shadow region
 	}
+#elif defined(__loongarch64)
+	i = rnd_modulo_u32(4);
+
+	switch (i) {
+	case 0: return MODULE_ADDR | (low & 0x03ffffff);		// module region
+	case 1: return 0xffff000000000000UL | (low & 0x3fffffff);	// vmalloc region
+	case 2: return KERNEL_ADDR | (low & 0x0fffff);			// kernel text
+	case 3: return 0x8000000000000000UL | (low & 0x3fffffff);	// uncached DMW0 direct map
+	}
 #endif
 
 	return i | low;

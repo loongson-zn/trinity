@@ -115,6 +115,7 @@ static const uint32_t bpf_saner_vars[] = {
 static const uint32_t bpf_seccomp_jmp_arch_vars[] = {
 	AUDIT_ARCH_ALPHA, AUDIT_ARCH_ARM, AUDIT_ARCH_ARMEB,
 	AUDIT_ARCH_I386,
+	AUDIT_ARCH_LOONGARCH64,
 	AUDIT_ARCH_M68K, AUDIT_ARCH_MIPS, AUDIT_ARCH_MIPSEL,
 	AUDIT_ARCH_MIPS64, AUDIT_ARCH_MIPSEL64, AUDIT_ARCH_PARISC,
 	AUDIT_ARCH_PARISC64, AUDIT_ARCH_PPC, AUDIT_ARCH_PPC64, AUDIT_ARCH_S390,
@@ -132,6 +133,9 @@ static const uint32_t bpf_seccomp_jmp_arch_vars[] = {
 #elif defined(__aarch64__)
 # define TRUE_REG_SYSCALL	syscall_nr
 # define TRUE_ARCH		AUDIT_ARCH_AARCH64
+#elif defined(__loongarch64)
+# define TRUE_REG_SYSCALL	syscall_nr
+# define TRUE_ARCH		AUDIT_ARCH_LOONGARCH64
 #elif defined(__arm__)
 # define TRUE_REG_SYSCALL	syscall_nr
 # define TRUE_ARCH		AUDIT_ARCH_ARM

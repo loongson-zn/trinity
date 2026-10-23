@@ -13,3 +13,6 @@
 #ifdef __aarch64__
 #include "syscalls-aarch64.h"
 #endif
+#ifdef __loongarch64
+#include "syscalls-loongarch.h"
+#endif

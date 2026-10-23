@@ -279,6 +279,8 @@ void *fault_beacon_extract_ip(const void *ctx)
 	return (void *)uc->uc_mcontext.gregs[REG_EIP];
 #elif defined(__aarch64__)
 	return (void *)uc->uc_mcontext.pc;
+#elif defined(__loongarch64)
+	return (void *)uc->uc_mcontext.__pc;
 #else
 	(void)uc;
 	return NULL;
@@ -297,6 +299,8 @@ void *fault_beacon_extract_sp(const void *ctx)
 	return (void *)uc->uc_mcontext.gregs[REG_ESP];
 #elif defined(__aarch64__)
 	return (void *)uc->uc_mcontext.sp;
+#elif defined(__loongarch64)
+	return (void *)uc->uc_mcontext.__gregs[LARCH_REG_SP];
 #else
 	(void)uc;
 	return NULL;

@@ -523,6 +523,8 @@ const char *chain_corpus_default_path(void)
 	arch = "i386";
 #elif defined(__aarch64__)
 	arch = "aarch64";
+#elif defined(__loongarch64)
+	arch = "loongarch64";
 #elif defined(__arm__)
 	arch = "arm";
 #else

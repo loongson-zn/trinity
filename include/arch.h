@@ -18,6 +18,10 @@
 #include "arch-aarch64.h"
 #endif
 
+#ifdef __loongarch64
+#include "arch-loongarch.h"
+#endif
+
 #ifndef SYSCALL_OFFSET
 #define SYSCALL_OFFSET 0
 #endif
